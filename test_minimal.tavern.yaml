@@ -1,0 +1,22 @@
+test_name: Get location for US zip code 90210 and check response
+
+stages:
+  - name: Check that HTTP status code equals 200
+    request:
+      url: http://api.zippopotam.us/us/90210
+      method: GET
+    response:
+      status_code: 200
+      headers:
+        content-type: application/json
+      json:
+        #{"post code": "90210", "country": "United States", "country abbreviation": "US", "places": [{"place name": "Beverly Hills", "longitude": "-118.4065", "state": "California", "state abbreviation": "CA", "latitude": "34.0901"}]}
+        post code: '90210'
+        country: "United States"
+        country abbreviation: 'US'
+        places:
+          - place name: 'Beverly Hills'
+            longitude: '-118.4065'
+            state: 'California'
+            state abbreviation: 'CA'
+            latitude: '34.0901'
